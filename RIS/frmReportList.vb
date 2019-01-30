@@ -2,6 +2,7 @@ Imports System.IO
 'Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
+
 Imports System.Windows.Forms
 Public Class frmReportList
     Inherits System.Windows.Forms.Form
@@ -566,12 +567,16 @@ Public Class frmReportList
             'i = 0
             'Dim paths As String() = Me.trvReports.SelectedNode.Tag.Split(New Char() {"\"c})
             'Dim path As String = paths(paths.Length - 1)
-            'If path = "Female Subjects - CryoVial Labels.rpt" Then
+            'If Path = "Female Subjects - CryoVial Labels.rpt" Then
             'MessageBox.Show(frmrptViewer.reportDocument1.RecordSelectionFormula)
             'frmrptViewer.reportDocument1.RecordSelectionFormula = "(   (   (  {qryStuHpvFindExistingSubjectIDs2.LabelVisit} = {?Visit#}  AND  {@SubjNum} in right({?PmSubjNum1},5) to right({?PmSubjNum2},5)  )   AND  {qryStuHpvFindExistingSubjectIDs2.LabelCode} = ""S""  )   AND  {qryStuHpvFindExistingSubjectIDs2.LabelGender} in [""MF"", ""F""]  )"
             'frmrptViewer.CrystalReportViewer1.ReportSource = frmrptViewer.reportDocument1
             'End If
             'MessageBox.Show(frmrptViewer.reportDocument1.RecordSelectionFormula)
+            'frmrptViewer.CrystalReportViewer1.SelectionFormula = "(   (   (  {qryStuHpvFindExistingSubjectIDs2.LabelVisit} = {?Visit#}  AND  {@SubjNum} in right({?PmSubjNum1},5) to right({?PmSubjNum2},5)  )   AND  {qryStuHpvFindExistingSubjectIDs2.LabelCode} = ""S""  )   AND  {qryStuHpvFindExistingSubjectIDs2.LabelGender} in [""MF"", ""F""]  )"
+            'frmReportViewer.CrystalReportViewer1.SelectionFormula = "( ( ({qryStuHpvFindExistingSubjectIDs2.LabelVisit} = {?Visit#} ) )  )"
+            frmrptViewer.CrystalReportViewer1.SelectionFormula = frmrptViewer.reportDocument1.RecordSelectionFormula
+
             frmrptViewer.CrystalReportViewer1.Show()
             frmrptViewer.Show()
         Catch ex As Exception
